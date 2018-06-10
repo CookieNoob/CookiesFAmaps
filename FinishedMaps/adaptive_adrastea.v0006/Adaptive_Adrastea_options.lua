@@ -1,83 +1,141 @@
+-- This file adds options to the game lobby. There are two types of options in this file
+-- 1) options that will automatically work when you fill out the adaptive map tables for the 
+--    players. These options are enabled by default. Some sub-options require also additional tables
+--    they are deactivated by default, but you can easily activate them by removing the "--" before the
+--    deactivated option.
+-- 2) options that require an additional table to work (or other things). These options start
+--    a bit further down in the file and if you want to use them, just move them above the comment 
+--    section. Dont forget to add the required tables. 
+
+-- IMPORTANT: If you change the default for the option, make sure to also adjust the script! The default
+--            key values of the options are stored at the top of the script file. For example:
+--            "local dynamic_spawn = ScenarioInfo.Options.dynamic_spawn or 1"
+--            If you want the default to be something different, then you also have to change it here.
+--            Also keep in mind to use the "key" of the selected option, which is not necessarily the
+--            same as "default" of the option (the default value specifies the number of the option that
+--            is used as the default).
+
+-- The options are now using the language that is set in the game for the names of the options and
+-- the explanation text. Most options that spawn a specific number of mexes have translations prepared
+-- for up to 9 mex. Just use for example "adaptive_middle_mex_key_7_help" when you want to have the
+-- text for 7 mex. Keep in mind that you also have to adjust the label, but NOT the key = XX of the option.
+-- If you do not want to use the standard text and write something different, just remove the 
+-- "<LOC adaptive_somethingsomething> the standard text you dont want" part and write your own text.
+-- Obviously this text wont translate and will always show english.
+
 options ={
 
 {
     default = 1,
-    label = "dynamic spawn of mexes",
-    help = "Enable the mex spawn algorithm to adjust the map to the player count",
-    key = 'automex',
-    pref = 'automex',
+    label = "<LOC adaptive_dynamic_spawn_label> Dynamic Spawn Of Resources",
+    help = "<LOC adaptive_dynamic_spawn_help> Determine which mexes & hydros should be spawned.",
+    key = 'dynamic_spawn',
+    pref = 'dynamic_spawn',
     values = {
-        { text = "enabled", help = "map adjust automatically for the playercount", key = 1, },
-        { text = "disabled - 4v4 mex", help = "Map will not adjust for players and will spawn the mexes of the first four players and their expansions. Use the spots 1-8", key = 2, },
-        { text = "disabled - all mex", help = "Map will not adjust for players and will spawn the all mexes", key = 3, },
-        { text = "enabled - crazyrush 1 mex", help = "Map will activate the crazyrush script and spawn 1 starting mex for all players.", key = 6, },
-        { text = "enabled - crazyrush", help = "Map will activate the crazyrush script.", key = 7, },
+        { text = "<LOC adaptive_dynamic_spawn_key_1_label> mirror slots", help = "<LOC adaptive_dynamic_spawn_key_1_help> Spawn resources for player & mirror slot (balanced resources).", key = 1, },
+        { text = "<LOC adaptive_dynamic_spawn_key_2_label> used slots", help = "<LOC adaptive_dynamic_spawn_key_2_help> Only spawn resources for player on used slots (unbalanced resources).", key = 2, },
+        { text = "<LOC adaptive_dynamic_spawn_key_3_label> no mirror = no resources", help = "<LOC adaptive_dynamic_spawn_key_3_help> Only spawn resources if mirror slot is also occupied by a player (not recommended, but it can make uneven matches fairer).", key = 3, },
+        -- { text = "<LOC adaptive_dynamic_spawn_key_4_label> 2v2 setup", help = "<LOC adaptive_dynamic_spawn_key_4_help> Don't adjust for player & spawn resources for 2v2.", key = 4, },
+        { text = "<LOC adaptive_dynamic_spawn_key_5_label> 4v4 setup", help = "<LOC adaptive_dynamic_spawn_key_5_help> Don't adjust for player & spawn resources for 4v4.", key = 5, },
+        -- { text = "<LOC adaptive_dynamic_spawn_key_6_label> 6v6 setup", help = "<LOC adaptive_dynamic_spawn_key_6_help> Don't adjust for player & spawn resources for 6v6.", key = 6, },
+        { text = "<LOC adaptive_dynamic_spawn_key_7_label> 8v8 setup", help = "<LOC adaptive_dynamic_spawn_key_7_help> Don't adjust for player & spawn resources for maximum player count.", key = 7, },
+    },
+},
+
+{
+    default = 1,
+    label = "<LOC adaptive_crazyrush_label> Crazyrush",
+    help = "<LOC adaptive_crazyrush_help> Activate different types of crazyrush* for the spawned mexes. *Building a mex on a mass point will always create new adjacent mass points to build on.",
+    key = 'crazyrush_mexes',
+    pref = 'crazyrush_mexes',
+    values = {
+        { text = "<LOC adaptive_disabled> disabled", help = "<LOC adaptive_crazyrush_key_1_help> No crazyrush.", key = 1, },
+        { text = "<LOC adaptive_crazyrush_key_2_label> crazyrush forward mexes", help = "<LOC adaptive_crazyrush_key_2_help> Activate crazyrush only for some central mexes. All other mexes will behave normally.", key = 2, },
+        { text = "<LOC adaptive_crazyrush_key_3_label> crazyrush 1 core mex", help = "<LOC adaptive_crazyrush_key_3_help> Activate crazyrush & spawn only 1 core mex per active slot.", key = 3, },
+        { text = "<LOC adaptive_crazyrush_key_4_label> crazyrush", help = "<LOC adaptive_crazyrush_key_4_help> Activate crazyrush for all spawned mexes.", key = 4, },
+    },
+},
+
+{
+    default = 1,
+    label = "<LOC adaptive_regrowing_label> Regrowing Trees",
+    help = "<LOC adaptive_regrowing_help> Regrow reclaimed/destroyed trees when other trees are nearby. Regrow is faster if more trees are close.",
+    key = 'TreeRegrowSpeed',
+    pref = 'TreeRegrowSpeed',
+    values = {
+        { text = "<LOC adaptive_disabled> disabled", help = "<LOC adaptive_regrowing_key_1_help> No regrowing trees.", key = 1, },
+        { text = "<LOC adaptive_regrowing_key_2_label> fast", help = "<LOC adaptive_regrowing_key_2_help> Regrow trees faster.", key = 2, },
+        { text = "<LOC adaptive_enabled> enabled", help = "<LOC adaptive_regrowing_key_3_help> Regrow trees.", key = 3, },
+        { text = "<LOC adaptive_regrowing_key_4_label> slow", help = "<LOC adaptive_regrowing_key_4_help> Regrow trees slower.", key = 4, },
+    },
+},
+
+{
+    default = 2,
+    label = "<LOC adaptive_middle_mex_label> Middle Mexes",
+    help = "<LOC adaptive_middle_mex_help> Configure the amount of mexes at the middle of the map.",
+    key = 'middle_mexes',
+    pref = 'middle_mexes',
+    values = {
+		-- there are translations prepared for up to 9 mex.
+        { text = "0", help = "<LOC adaptive_middle_mex_key_0_help> No additional mexes in the middle.", key = 1, }
+        { text = "2", help = "<LOC adaptive_middle_mex_key_2_help> Spawn 2 mexes in the middle.", key = 2, },
+        { text = "4", help = "<LOC adaptive_middle_mex_key_4_help> Spawn 4 mexes in the middle.", key = 3, },
+        { text = "6", help = "<LOC adaptive_middle_mex_key_6_help> Spawn 6 mexes in the middle.", key = 4, },
     },
 },
 
 {
     default = 3,
-    label = "number middlemex",
-    help = "configure the amount of mexes in the middle region of the map.",
-    key = 'middlemex',
-    pref = 'middlemex',
+    label = "<LOC adaptive_side_mex_label> Side Mexes",
+    help = "<LOC adaptive_side_mex_help> Configure the amount of mexes at the sides of the map.",
+    key = 'side_mexes',
+    pref = 'side_mexes',
     values = {
-        { text = "enabled - more mex", help = "Spawn 6 additional mexes in the middle.", key = 1, },
-        { text = "enabled", help = "Spawn 4 additional mexes in the middle.", key = 2, },
-        { text = "enabled - fewer mex", help = "Spawn 2 additional mexes in the middle.", key = 3, },
-        { text = "disabled", help = "Spawn no additional mexes in the middle.", key = 4, }
+		-- there are translations prepared for up to 9 mex per side, so 18 mex in total.
+        { text = "0", help = "<LOC adaptive_side_mex_key_0_help> No additional mexes at the side.", key = 1, },
+        { text = "1", help = "<LOC adaptive_side_mex_key_1_help> Spawn 2 mexes, 1 on each side.", key = 2, },
+        { text = "2", help = "<LOC adaptive_side_mex_key_2_help> Spawn 4 mexes, 2 on each side.", key = 3, },
+        { text = "3", help = "<LOC adaptive_side_mex_key_3_help> Spawn 6 mexes, 3 on each side.", key = 4, },
+    },
+},
+{
+    default = 3,
+    label = "<LOC adaptive_underwater_mex_label> Underwater Mexes",
+    help = "<LOC adaptive_underwater_mex_help> Configure the amount of underwater mexes.",
+    key = 'underwater_mexes',
+    pref = 'underwater_mexes',
+    values = {
+		-- there are translations prepared for up to 9 mex.
+        { text = "0", help = "<LOC adaptive_underwater_mex_key_0> No additional underwater mexes.", key = 1, },
+        { text = "3", help = "<LOC adaptive_underwater_mex_key_3> Spawn 3 mexes in the water around the islands.", key = 2, },
+        { text = "6", help = "<LOC adaptive_underwater_mex_key_6> Spawn 6 mexes in the water around the islands.", key = 3, },
+        { text = "9", help = "<LOC adaptive_underwater_mex_key_9> Spawn 9 mexes in the water around the islands.", key = 4, },
     },
 },
 
 {
     default = 2,
-    label = "number sidemex",
-    help = "configure the amount of mexes on the sides of the map (behind the rock position).",
-    key = 'sidemex',
-    pref = 'sidemex',
+    label = "<LOC adaptive_island_mex_label> Island Mexes",
+    help = "<LOC adaptive_island_mex_help> Configure the amount of mexes at the island.",
+    key = 'island_mexes',
+    pref = 'island_mexes',
     values = {
-        { text = "enabled - more mex", help = "Spawn 3 additional mexes on each side.", key = 1, },
-        { text = "enabled", help = "Spawn 2 additional mexes on each side.", key = 2, },
-        { text = "enabled - fewer mex", help = "Spawn 1 additional mex on each side.", key = 3, },
-        { text = "disabled", help = "Spawn no additional mexes on the side.", key = 4, },
-    },
-},
-
-{
-    default = 2,
-    label = "additional underwatermex",
-    help = "additional sidemex in both oceans.",
-    key = 'underwatermex',
-    pref = 'underwatermex',
-    values = {
-        { text = "enabled - more mex", help = "Spawn 9 additional mexes in the water on both sides.", key = 1, },
-        { text = "enabled", help = "Spawn 6 additional mexes in the water around the islands.", key = 2, },
-        { text = "enabled - fewer mex", help = "Spawn 3 additional mexes in the water around the islands.", key = 3, },
-        { text = "disabled", help = "Spawn no additional mexes in the water around the islands.", key = 4, },
-    },
-},
-
-{
-    default = 2,
-    label = "number islandmex",
-    help = "configure the amount of mexes on the islands of the map.",
-    key = 'islandmex',
-    pref = 'islandmex',
-    values = {
-        { text = "enabled - 2 mex", help = "Spawn 2 mexes on the island.", key = 1, },
-        { text = "enabled - 1 mex", help = "Spawn 1 mexes on the island.", key = 2, },
-        { text = "disabled", help = "Spawn no mexes on the island.", key = 3, },
+		-- there are translations prepared for up to 9 mex.
+        { text = "0", help = "<LOC adaptive_island_mex_key_0> No additional mexes at the island.", key = 1, },
+        { text = "1", help = "<LOC adaptive_island_mex_key_1> Spawn 1 mex at the island.", key = 2, },
+        { text = "2", help = "<LOC adaptive_island_mex_key_2> Spawn 2 mexes at the island.", key = 3, },
     },
 },
 
 {
     default = 3,
-    label = "additional reclaim",
-    help = "add groups of wrecks to the map",
-    key = 'optional_reclaim',
-    pref = 'optional_reclaim',
+    label = "<LOC adaptive_wreckage_label> Wreckage",
+    help = "<LOC adaptive_wreckage_help> Scale amount of unit wrecks.",
+    key = 'optional_wreckage',
+    pref = 'optional_wreckage',
     values = {
-        { text = "no reclaim", help = "Do not add additional reclaim in the middle of the map", key = 1, },
+        { text = "<LOC adaptive_disabled> disabled", help = "Do not add additional reclaim in the middle of the map", key = 1, },
         { text = "some reclaim", help = "Add some frigates to the beaches of the map.", key = 2, },
         { text = "more reclaim", help = "Add some cruisers to the map.", key = 3, },
         { text = "destro+frigates", help = "Add some frigates, cruisers and destroyers to the map.", key = 4, },
@@ -88,25 +146,14 @@ options ={
 
 {
     default = 1,
-    label = "additional mex",
-    help = "Spawns one additional mex for each present player in the starting base.",
-    key = 'additionalmex',
-    pref = 'additionalmex',
+    label = "<LOC adaptive_core_mex_label> Core Mexes",
+    help = "<LOC adaptive_core_mex_2_help> Spawn 4 or 5 core mexes.",
+    key = 'core_mexes',
+    pref = 'core_mexes',
     values = {
-        { text = "disabled", help = "Spawn the usual ressources.", key = 1, },
-        { text = "enabled", help = "Spawns one additional mex per player.", key = 2, },
-    },
-},
-
-{
-    default = 1,
-    label = "forward crazyrush mex",
-    help = "makes a few mexes behave like crazyrush mexes.",
-    key = 'dupicatesinglemex',
-    pref = 'dupicatesinglemex',
-    values = {
-        { text = "disabled", help = "All mexes behave normally.", key = 1, },
-        { text = "enabled", help = "Some expansion mex split into multiple mexes.", key = 2, },
+		-- there are no additional translations for this option
+        { text = "4", help = "<LOC adaptive_core_mex_key_4> Spawn 4 core mexes.", key = 1, },
+        { text = "5", help = "<LOC adaptive_core_mex_key_5> Spawn 5 core mexes.", key = 2, },
     },
 },
 
@@ -129,36 +176,6 @@ options ={
         { text = "<LOC adaptive_natural_modifier_key_0_label> 0 percent", help = "<LOC adaptive_natural_modifier_key_0_help> Remove Mass & energy values from rock & tree props.", key = 0, },
     },
 },
-
-
-{
-    default = 1,
-    label = "mirror spots",
-    help = "Only spawn ressources when mirror spots are taken",
-    key = 'mirrormex',
-    pref = 'mirrormex',
-    values = {
-        { text = "disabled", help = "Spawn mex for players that dont have a mirror. The empty mirror spot will also spawn its mex.", key = 1, },
-        { text = "enabled", help = "Only spawn mex/hydro when opposing spot is also taken. This option is not recommended, however it can make uneven matches fairer.", key = 2, },
-
-    },
-},
-
-{
-    default = 1,
-    label = "regrowing trees",
-    help = "Regrow reclaimed trees slowly when there are still other trees around. If there are more trees close, they regrow faster.",
-    key = 'tree',
-    pref = 'tree',
-    values = {
-        { text = "disabled", help = "Dont regrow trees.", key = 1, },
-        { text = "enabled - faster", help = "Regrow trees faster.", key = 2, },
-        { text = "enabled", help = "Regrow trees.", key = 3, },
-        { text = "enabled - slower", help = "Regrow trees slower.", key = 4, },
-    },
-},
-
-
 
 --[[
 {
