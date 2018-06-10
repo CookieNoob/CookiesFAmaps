@@ -1,5 +1,5 @@
--- table of which ressources belong to which player, it is sorted in such a way that the first line 
--- corresponds to player one, the second to player 2 and so on...
+-- enter maximum possible player count (army slots) on the map
+maxPlayerOnMap = 16
 
 
 
@@ -46,23 +46,23 @@ spwnHydroArmy ={    {1},
                     {16}}
 
 -- table for the "additional hydro" option
-spwnAdditionalHydro = {}
+extraHydros = {}
 
-middlemass = {{141,142},{137,138,139,140},{135,136}}
+middleMexes = {{141,142},{137,138,139,140},{135,136}}
 
-sidemass = {{147,148},{149,150}}
+sideMexes = {{147,148},{149,150}}
 
-underwatermass = {}
+underwaterMexes = {}
 
-islandmass ={{129,130},{131,132}}
+islandMexes ={{129,130},{131,132}}
 
-backmass = {}
+extraMexes = {}
 
 -- table for the "dynamic spawn - crazyrush 1 mex" option
 crazyrushOneMex = {1,2,15,16,29,30,43,44,57,58,71,72,85,86,99,100}
 
 -- add mexes in this table also to the corresponding player (allows to increase the mex count in the starting base)
-extramass = {13,14,25,26,41,42,55,56,69,70,83,84,97,98,111,112}
+coreMexes = {13,14,25,26,41,42,55,56,69,70,83,84,97,98,111,112}
 
 -- table for the "forward crazyrush option"
-DuplicateListMex = {143,144}
+forwardCrazyrushMexes = {143,144}

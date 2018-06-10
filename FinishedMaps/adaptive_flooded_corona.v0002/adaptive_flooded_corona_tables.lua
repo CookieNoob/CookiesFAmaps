@@ -1,5 +1,5 @@
--- table of which ressources belong to which player, it is sorted in such a way that the first line 
--- corresponds to player one, the second to player 2 and so on...
+-- enter maximum possible player count (army slots) on the map
+maxPlayerOnMap = 16
 
 
 
@@ -45,18 +45,18 @@ spwnHydroArmy ={    {0},
                     {13},
                     {14}};
                   
-spwnAdditionalHydro = {17,18};
+extraHydros = {17,18};
 
-sidemass = {{},{}};
+sideMexes = {{},{}};
 
-middlemass = {{119,120},{88,42},{117,118}};
+middleMexes = {{119,120},{88,42},{117,118}};
                   
-underwatermass = {{},{}}
+underwaterMexes = {{},{}}
 
-islandmass ={{141,142},{143,144}}
+islandMexes ={{141,142},{143,144}}
 
-backmass = {{},{}}
+extraMexes = {{},{}}
 
 crazyrushOneMex = {95,96,14,68,122,7,130,43,3,53,83,129,73,50,121,18}
 
-DuplicateListMex = {145}
+forwardCrazyrushMexes = {145}
