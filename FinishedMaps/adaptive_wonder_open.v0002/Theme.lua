@@ -1,0 +1,21 @@
+strata = {
+	'LowerAlbedo' = {'/env/evergreen2/layers/eg_gravel_albedo.dds',8,}
+	'LowerNormal' = {'/env/evergreen2/layers/evrock007_normal.dds',44.75,}
+	'Albedo0' = {'/env/evergreen2/layers/evgrass009_albedo.dds',4,}
+	'Normal0' = {'/env/evergreen2/layers/evrock007_normal.dds',21.5,}
+	'Albedo1' = {'/env/evergreen2/layers/evgrass003_albedo.dds',6.75,}
+	'Normal1' = {'/env/evergreen2/layers/evrock007_normal.dds',6,}
+	'Albedo2' = {'/env/evergreen2/layers/evrock007_albedo.dds',17.25,}
+	'Normal2' = {'/env/evergreen2/layers/eg_none_normal.dds',4,}
+	'Albedo3' = {'/env/evergreen2/layers/evrock006_albedo.dds',13,}
+	'Normal3' = {'/env/tundra/layers/tund_none_normal.dds',4,}
+	'Albedo4' = {'/env/paradise/layers/ice001_albedo.dds',4,}
+	'Normal4' = {'/env/crystalline/layers/cr_08_01_normal.dds',4,}
+	'Albedo5' = {'',4,}
+	'Normal5' = {'',4,}
+	'Albedo6' = {'',4,}
+	'Normal6' = {'',4,}
+	'Albedo7' = {'',4,}
+	'Normal7' = {'',4,}
+	'UpperAlbedo' = {'/env/evergreen/layers/macrotexture000_albedo.dds',128,}
+}

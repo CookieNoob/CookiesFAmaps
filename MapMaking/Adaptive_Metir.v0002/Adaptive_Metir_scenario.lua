@@ -1,0 +1,45 @@
+version = 3ScenarioInfo = {    name = 'Adaptive Metir',
+    description = "During the time of the infinite war, there was a large temple complex from the aeon on this planet. Suddently the contact to the aeon base was lost. When the reinforcements arrived, they only found a totally destroyed base and wrecks from unknown design. Sensor arrays were deployed and a small observation post was established, but the base was never rebuild. Map and script by CookieNoob.",
+    map_version = 2,
+    AdaptiveMap = true,
+    type = 'skirmish',    starts = true,    size = {1024, 1024},
+    map = '/maps/Adaptive_Metir.v0002/Adaptive_Metir.scmap',
+    save = '/maps/Adaptive_Metir.v0002/Adaptive_Metir_save.lua',
+    script = '/maps/Adaptive_Metir.v0002/Adaptive_Metir_script.lua',
+    preview = '',
+    norushradius = 40.000000,
+    norushoffsetX_ARMY_1 = 0.000000,
+    norushoffsetY_ARMY_1 = 0.000000,
+    norushoffsetX_ARMY_2 = 0.000000,
+    norushoffsetY_ARMY_2 = 0.000000,
+    norushoffsetX_ARMY_3 = 0.000000,
+    norushoffsetY_ARMY_3 = 0.000000,
+    norushoffsetX_ARMY_4 = 0.000000,
+    norushoffsetY_ARMY_4 = 0.000000,
+    norushoffsetX_ARMY_5 = 0.000000,
+    norushoffsetY_ARMY_5 = 0.000000,
+    norushoffsetX_ARMY_6 = 0.000000,
+    norushoffsetY_ARMY_6 = 0.000000,
+    norushoffsetX_ARMY_7 = 0.000000,
+    norushoffsetY_ARMY_7 = 0.000000,
+    norushoffsetX_ARMY_8 = 0.000000,
+    norushoffsetY_ARMY_8 = 0.000000,
+    norushoffsetX_ARMY_9 = 0.000000,
+    norushoffsetY_ARMY_9 = 0.000000,
+    norushoffsetX_ARMY_10 = 0.000000,
+    norushoffsetY_ARMY_10 = 0.000000,
+    norushoffsetX_ARMY_11 = 0.000000,
+    norushoffsetY_ARMY_11 = 0.000000,
+    norushoffsetX_ARMY_12 = 0.000000,
+    norushoffsetY_ARMY_12 = 0.000000,
+    norushoffsetX_ARMY_13 = 0.000000,
+    norushoffsetY_ARMY_13 = 0.000000,
+    norushoffsetX_ARMY_14 = 0.000000,
+    norushoffsetY_ARMY_14 = 0.000000,
+    norushoffsetX_ARMY_15 = 0.000000,
+    norushoffsetY_ARMY_15 = 0.000000,
+    norushoffsetX_ARMY_16 = 0.000000,
+    norushoffsetY_ARMY_16 = 0.000000,
+    Configurations = {        ['standard'] = {            teams = {                { 					name = 'FFA', 					armies = {'ARMY_1','ARMY_2','ARMY_3','ARMY_4','ARMY_5','ARMY_6','ARMY_7','ARMY_8','ARMY_9','ARMY_10','ARMY_11','ARMY_12','ARMY_13','ARMY_14','ARMY_15','ARMY_16',}
+				},            },            customprops = {
+				['ExtraArmies'] = STRING( 'ARMY_17' )            },        },    }}

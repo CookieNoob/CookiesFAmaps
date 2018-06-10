@@ -1,0 +1,60 @@
+version = 3
+ScenarioInfo = {
+    name = 'Adaptive Point of Reach',
+    description = "The Infinite War decimated many systems and turned this planet into an uninhabitable wasteland. The thermonuclear bombardment made it completely empty and the atmosphere started evaporating. In the effort to save cybran refugees Doctor Brackman tested his terraformer. Within a few weeks many unique species came to existance here. This ironically brought the war back to this planet and the cybrans were forced to leave it. Map adjusted for dynamic spawns, graphical enhancements and customization options by CookieNoob. Underwater hightmap and general visual improvements by Tokyto. Original Map by Plasma_Wolf.",
+    map_version = 2,
+    AdaptiveMap = true,
+    type = 'skirmish',
+    starts = true,
+    size = {1024, 1024},
+    map = '/maps/adaptive_point_of_reach.v0002/adaptive_point_of_reach.scmap',
+    save = '/maps/adaptive_point_of_reach.v0002/adaptive_point_of_reach_save.lua',
+    script = '/maps/adaptive_point_of_reach.v0002/adaptive_point_of_reach_script.lua',
+    preview = '',
+    norushradius = 100.000000,
+    norushoffsetX_ARMY_1 = 0.000000,
+    norushoffsetY_ARMY_1 = 0.000000,
+    norushoffsetX_ARMY_2 = 0.000000,
+    norushoffsetY_ARMY_2 = 0.000000,
+    norushoffsetX_ARMY_3 = 0.000000,
+    norushoffsetY_ARMY_3 = 0.000000,
+    norushoffsetX_ARMY_4 = 0.000000,
+    norushoffsetY_ARMY_4 = 0.000000,
+    norushoffsetX_ARMY_5 = 0.000000,
+    norushoffsetY_ARMY_5 = 0.000000,
+    norushoffsetX_ARMY_6 = 0.000000,
+    norushoffsetY_ARMY_6 = 0.000000,
+    norushoffsetX_ARMY_7 = 0.000000,
+    norushoffsetY_ARMY_7 = 0.000000,
+    norushoffsetX_ARMY_8 = 0.000000,
+    norushoffsetY_ARMY_8 = 0.000000,
+    norushoffsetX_ARMY_9 = 0.000000,
+    norushoffsetY_ARMY_9 = 0.000000,
+    norushoffsetX_ARMY_10 = 0.000000,
+    norushoffsetY_ARMY_10 = 0.000000,
+    norushoffsetX_ARMY_11 = 0.000000,
+    norushoffsetY_ARMY_11 = 0.000000,
+    norushoffsetX_ARMY_12 = 0.000000,
+    norushoffsetY_ARMY_12 = 0.000000,
+    norushoffsetX_ARMY_13 = 0.000000,
+    norushoffsetY_ARMY_13 = 0.000000,
+    norushoffsetX_ARMY_14 = 0.000000,
+    norushoffsetY_ARMY_14 = 0.000000,
+    norushoffsetX_ARMY_15 = 0.000000,
+    norushoffsetY_ARMY_15 = 0.000000,
+    norushoffsetX_ARMY_16 = 0.000000,
+    norushoffsetY_ARMY_16 = 0.000000,
+    Configurations = {
+        ['standard'] = {
+            teams = {
+                { 
+					name = 'FFA', 
+					armies = {'ARMY_1','ARMY_2','ARMY_3','ARMY_4','ARMY_5','ARMY_6','ARMY_7','ARMY_8','ARMY_9','ARMY_10','ARMY_11','ARMY_12','ARMY_13','ARMY_14','ARMY_15','ARMY_16',}
+				},
+            },
+            customprops = {
+				['ExtraArmies'] = STRING( 'ARMY_17 NEUTRAL_CIVILIAN' )
+            },
+        },
+    }
+}
