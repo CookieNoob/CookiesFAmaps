@@ -60,10 +60,10 @@ extraHydros = {{}}
 extraMexes = {{}}
 
 -- configure the amount of mexes at a certain map position
-middleMexes = {{157,158},{159,160},{161,162}}
-sideMexes = {{163,164},{167,168},{165,166}}
-underwaterMexes = {{15,16,141,142,149,150},{137,138,139,140,145,146},{135,136,143,144,147,148}}
-islandMexes ={{151,152},{153,154}}
+middleMexes = {{161,162},{159,160},{157,158}}
+sideMexes = {{165,166},{167,168},{163,164}}
+underwaterMexes = {{135,136,143,144,147,148},{137,138,139,140,145,146},{15,16,141,142,149,150}}
+islandMexes ={{153,154},{151,152}}
 expansionMexes = {{},{},{}}
 
 -- BASE RESOURCE SCALING OPTIONS
