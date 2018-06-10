@@ -3,7 +3,7 @@
 ------------------------------------------------------------------------
 local ScenarioUtils = import('/lua/sim/ScenarioUtilities.lua')
 local ScenarioFramework = import('/lua/ScenarioFramework.lua')
-local Tables = import('/maps/adaptive_adrastea.v0004/Adaptive_Adrastea_tables.lua')
+local Tables = import('/maps/adaptive_adrastea.v0006/Adaptive_Adrastea_tables.lua')
 
 -- get scenario info about how the map should look like, if no option is changed, change it to the default
 local automex = ScenarioInfo.Options.automex or 1
